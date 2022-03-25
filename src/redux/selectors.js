@@ -2,24 +2,25 @@ import { createSelector } from 'reselect';
 
 export const searchTextSelector = (state) => state.filters.search;
 export const filterStatusSelector = (state) => state.filters.status;
-export const filterPrioritySelector = (state) => state.filters.priority;
+export const filterPrioritiesSelector = (state) => state.filters.priorities;
 export const todoListSelector = (state) => state.todoList;
 
 export const todoRemaining = createSelector(
   todoListSelector,
   filterStatusSelector,
   searchTextSelector,
-  filterPrioritySelector,
-  (todoList, status, searchText, priority) => {
+  filterPrioritiesSelector,
+  (todoList, status, searchText, priorities) => {
     return todoList.filter((todo) => {
       if (status === 'All') {
-        return priority.lenght
-          ? todo.name.includes(searchText) && priority.includes(todo.priority)
+        return priorities.length
+          ? todo.name.includes(searchText) && priorities.includes(todo.priority)
           : todo.name.includes(searchText);
       }
       return (
         todo.name.includes(searchText) &&
-        (status === 'Completed' ? todo.complete : !todo.completed)
+        (status === 'Completed' ? todo.complete : !todo.complete) &&
+        (priorities.length ? priorities.includes(todo.priority) : true)
       );
     });
   }
