@@ -57,9 +57,10 @@ export default function TodoList() {
         {todoList.map((todo) => (
           <Todo
             key={todo.id}
+            id={todo.id}
             name={todo.name}
             completed={todo.complete}
-            prioriry={todo.priority}
+            priority={todo.priority}
           />
         ))}
       </Col>
