@@ -35,7 +35,7 @@ export const statusFilterChange = (status) => {
 
 export const priorityFilterChange = (priorities) => {
   return {
-    type: 'filters/filterPrioritiesSelector',
+    type: 'filters/filterPrioritiesChange',
     payload: priorities,
   };
 };
