@@ -45,7 +45,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export default createSlice({
   name: 'filters',
-  initState: {
+  initialState: {
     search: '',
     status: 'All',
     priorities: [],
